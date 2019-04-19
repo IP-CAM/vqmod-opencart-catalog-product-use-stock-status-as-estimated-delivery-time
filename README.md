@@ -1,2 +1,7 @@
-# vqmod-opencart-catalog-product-use-stock-status-as-estimated-delivery-time
-[VQMOD] Use stock_status as "Estimated Delivery Time" in product page
+# [VQMOD] Use stock_status as "Estimated Delivery Time" in product page
+
+**Opencart**: v.2.1.0.2  
+**Languages**: English & Greek  
+**Attention**: You have to install `[VQMOD]` for **Opencart** ( https://github.com/vqmod/vqmod/releases ) for this to work!
+
+Upload the contents of the `upload` folder.
