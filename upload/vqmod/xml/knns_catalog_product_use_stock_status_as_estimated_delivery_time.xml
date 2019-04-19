@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modification
+		xmlns="https://github.com/vqmod/vqmod"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="https://github.com/vqmod/vqmod https://raw.githubusercontent.com/vqmod/vqmod/master/vqmod.xsd"
+		>
+		<id><![CDATA[[VQMOD] Use stock_status as "Estimated Delivery Time" in product page]]></id>
+		<version>0.1.0</version>
+		<vqmver>2.6.3</vqmver>
+		<author>kanenas.net (aka Nikolas Branis) - nbran@kanenas.net</author>
+		<file path="catalog/language/english/product/" name="product.php" error="log">
+			<operation error="skip">
+				<search position="after"><![CDATA[// Text]]></search>
+				<add><![CDATA[$_['text_product_edt']        = 'ESTIMATED DELIVERY TIME:';]]></add>
+			</operation>
+		</file>
+		<file path="catalog/language/greek/product/" name="product.php" error="log">
+			<operation error="skip">
+				<search position="after"><![CDATA[// Text]]></search>
+				<add><![CDATA[$_['text_product_edt']        = 'ΕΚΤΙΜΩΜΕΝΟΣ ΧΡΟΝΟΣ ΠΑΡΑΔΟΣΗΣ:';]]></add>
+			</operation>
+		</file>
+		<file path="catalog/controller/product/" name="product.php" error="log">
+			<operation error="skip">
+				<search position="after"><![CDATA[$data['text_model'] = $this->language->get('text_model');]]></search>
+				<add><![CDATA[			$data['text_product_edt'] = $this->language->get('text_product_edt');]]></add>
+			</operation>
+			<operation error="skip">
+				<search position="after"><![CDATA[$data['model'] = $product_info['model'];]]></search>
+				<add><![CDATA[			$data['product_edt'] =  $product_info['stock_status'];]]></add>
+			</operation>
+		</file>
+		<file path="catalog/view/theme/*/template/product/" name="product.tpl" error="log">
+			<operation error="skip">
+				<search position="after"><![CDATA[<li class="p-stock"><?php echo $text_stock; ?> <span class="journal-stock <?php echo isset($stock_status) ? $stock_status : ''; ?>"><?php echo $stock; ?></span></li>]]></search>
+				<add><![CDATA[            <li class="knns-edt"><span class="knns-edt"><?php echo $text_product_edt; ?></span><?php echo $product_edt; ?></li>]]></add>
+			</operation>
+		</file>
+	</modification>
